@@ -5,9 +5,14 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
-
+var session = require('express-session');
 var routes = require('./routes/index');
+var flash = require('connect-flash');
+var passport = require('passport')
+var mongoose = require('mongoose');
 
+require('./config/passport');
+mongoose.connect('localhost:27017/shopping')
 
 var app = express();
 
@@ -21,6 +26,16 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+app.use(session({
+  secret: 'mysupersecret',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(flash())
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
