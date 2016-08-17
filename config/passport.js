@@ -36,3 +36,22 @@ passport.use('local.signup', new LocalStrategy({
 
 	})
 }))
+
+passport.use('local.signin', new LocalStrategy({
+	usernameField: 'email',
+	passwordField: 'password',
+	passReqToCallback: true
+}, function(req, email, password, done) {
+	User.findOne({'email':email}, function(err, user) {
+		if(err) {
+			return done(err)
+		}
+		if(!user) {
+			return done(null, false, {message: 'No user'})
+		}
+		if(!user.validPassword(password)){
+			return done(null, false, {message: 'Wrong Password'})
+		}
+		return done(null, user)
+	})
+}))

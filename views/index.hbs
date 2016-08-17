@@ -1,4 +1,4 @@
-<!-- 
+<!--
   <div id="slide">
     <img src="http://cdn.akamai.steamstatic.com/steam/apps/275850/header.jpg?t=1471035296"/>
     <img src="http://cdn.akamai.steamstatic.com/steam/apps/495890/header.jpg?t=1470400467"/>
@@ -18,21 +18,21 @@
       <div class="thumbnail">
         <img src="{{imagePath}}" alt="...">
         <div class="caption">
+
           <h3>{{title}}</h3>
           <p>{{description}}</p>
           <div class="clearfix">
             ${{price}}
             <div class="pull-right">
               <label for="sel1" class='label label-default'></label>
-              <select class="form" id="sel1">
+              <select class="form" id="sell" value='111'>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
               </select>
             </div>
-
-            <a href="#" class="btn btn-success pull-right" role="button">add to cart</a>
+            <a href="/add-to-cart/{{this.id}}" onclick="show(this)" class="btn btn-success pull-right" role="button">add to cart</a>
           </div>
         </div>
       </div>
@@ -41,5 +41,5 @@
 
 </div>
 
-
+<script type="text/javascript" src="javascripts/itemQty.js"></script>
 <script type="text/javascript" src="javascripts/pictureRotate.js"></script>
