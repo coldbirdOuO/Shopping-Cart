@@ -13,4 +13,19 @@ module.exports = function(oldCart) {
     this.totalQty++;
     this.price += storedItem.item.price;
   }
+  // this.generateArray = function() {
+	// 	var arr =  [];
+	// 	for (var id in this.items) {
+	// 		arr.push(this.items[id]);
+	// 	}
+	// 	return arr;
+	// }
+
+  this.generateArray = function(){
+    var arr = [];
+    for(id in this.items) {
+      arr.push(this.items[id])
+    }
+    return arr
+  }
 }
