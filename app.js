@@ -7,6 +7,7 @@ var bodyParser = require('body-parser');
 var exphbs = require('express-handlebars');
 var session = require('express-session');
 var routes = require('./routes/index');
+var userRoutes = require('./routes/user')
 var flash = require('connect-flash');
 var passport = require('passport')
 var mongoose = require('mongoose');
@@ -51,7 +52,7 @@ app.use(function(req, res, next) {
 })
 
 app.use('/', routes);
-
+app.use('/user', userRoutes);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
