@@ -9,7 +9,27 @@
 
  -->
 
+{{#if NotLogin}}
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="alert alert-danger">
+          {{loginMsg}}
+      </div>
+    </div>
+  </div>
 
+{{/if}}
+
+{{#if MsgBuying}}
+  <div class="row">
+    <div class="col-md-4 col-md-offset-4">
+      <div class="alert alert-danger">
+          {{SuccessBuying}}
+      </div>
+    </div>
+  </div>
+
+{{/if}}
 
 
 <div class="row">
