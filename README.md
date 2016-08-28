@@ -1,5 +1,5 @@
 # Shopping-Cart
-主要參考自https://www.youtube.com/watch?v=BW35NRzgcDM 這個教學影片  
+主要參考自https://www.youtube.com/watch?v=-3vvxn78MH4 這個教學影片  
 之後想增加兩點功能
 * 修改密碼 (0%)
 * 客服信箱 (0%)
