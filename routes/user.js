@@ -14,6 +14,20 @@ router.use(csrfProtection);
 var auth = require('passport-local-authenticate');
 var User = require('../models/user');
 
+//寄感謝註冊信
+var nodemailer = require('nodemailer');
+var credentials = require('../config/credentials')
+
+var mailTransport = nodemailer.createTransport('SMTP',{
+    service: 'Gmail',
+    auth: {
+        user: credentials.gmail.user,
+        pass: credentials.gmail.password
+    }
+});
+//寄感謝註冊信
+
+
 router.get('/profile', isLoggedIn, function (req, res, next) {
     Order.find({user: req.user}, function(err, orders) {
         if (err) {
@@ -56,8 +70,8 @@ router.post('/changePassword', function(req, res, next) {
   req.flash('success','成功更換密碼')
   res.redirect('/')
 })
+//結束換密碼
 
-//
 router.get('/logout', function(req, res, next) {
   req.logout();
   res.redirect('/');
@@ -74,11 +88,38 @@ router.get('/signup', function(req, res, next) {
   res.render('user/signup', {csrfToken: req.csrfToken(), message:messages , hasError: messages.length>0})
 })
 
+// router.post('/signup', passport.authenticate('local.signup', {
+// 	successRedirect: 'profile',
+// 	failureRedirect: 'signup',
+// 	failureFlash: true
+// })， function(req, res, next) {
+//   console.log('hihitest')
+// })
+
 router.post('/signup', passport.authenticate('local.signup', {
-	successRedirect: 'profile',
-	failureRedirect: 'signup',
-	failureFlash: true
-}))
+    failureRedirect: '/user/signup',
+    failureFlash: true
+}), function (req, res, next) {
+   var email = req.body.email
+    console.log(email)
+   res.render('mail/user3Q', {email:email}, function(err, html) {
+     if(err){
+         console.log('error in email template');
+     }
+     mailTransport.sendMail({
+       from: '"ColdbirdOuO ShoppingCart" <moopen200@gmail.com>', // sender address
+       to: email, // list of receivers
+       subject: 'Welcome to ColdbirdOuO ShoppingCart', // Subject line
+       html: html
+     }, function(err) {
+         if(err){
+             console.error('Unable to send confirmation: ' + err.stack)
+         };
+     });
+   })
+   res.render('mail/user3QforWeb',{email:email});
+});
+
 
 router.get('/signin', function(req, res, next) {
   var message = req.flash('error')

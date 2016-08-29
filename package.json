@@ -19,6 +19,7 @@
     "express-validator": "^2.20.8",
     "hbs": "~3.1.0",
     "morgan": "~1.6.1",
+    "nodemailer": "^0.7.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "passport-local-authenticate": "^1.2.0",
