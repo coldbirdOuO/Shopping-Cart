@@ -3,3 +3,5 @@ node_modules
 public/javascripts/checkout.js
 
 config/credentials.js
+
+npm-debug.log
