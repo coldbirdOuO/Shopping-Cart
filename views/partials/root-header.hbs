@@ -1,4 +1,4 @@
-<nav class="navbar" id='header'>
+<nav class="navbar navbar-fixed-top" id='root-header' >
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -8,18 +8,15 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-
-      <a class="navbar-brand" href="/">ColdbirdOuO</a>
-
+      <a class="navbar-brand" href="/admin">後台頁面</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <!-- <ul class="nav navbar-nav">
-        <li class=""><a href="#">Link <span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Link</a></li>
-      </ul> -->
+      <ul class="nav navbar-nav">
+        <li class=""><a href="#">新增商品 </a></li>
+      </ul>
 
-      <ul class="nav navbar-nav navbar-right">
+      <ul class="nav navbar-nav navbar-right root-nav">
         <li><a href="/shopping-cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i>  購物車
         <span class="badge">{{session.cart.totalQty}}</span>
         </a>

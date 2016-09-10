@@ -52,7 +52,6 @@ router.post('/checkout', function(req, res, next) {
   var stripe = require("stripe")(
     "sk_test_gH5cAVIoBfP8N1s1Vx2jAhir"
   );
-
   stripe.charges.create({
     amount: cart.price * 100,
     currency: "usd",
@@ -69,6 +68,11 @@ router.post('/checkout', function(req, res, next) {
   });
 })
 
+router.get('/admin', function(req, res, next) {
+  Product.find(function(err, result) {
+      res.render('index', { title: 'Shopping-Cart', products: result, root:true});
+  })
+})
 
 function isLoggedIn(req, res, next) {
   if(req.isAuthenticated()) {

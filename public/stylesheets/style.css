@@ -17,6 +17,29 @@ body {
   background-color: inherit !important;
 }
 
+#root-header {
+  background-color:black;
+  font-weight: bolder;
+  font-size: 16px;
+  font-family: "Heiti TC","HeitiTC-Light","LiHei","微軟正黑體","Lato","Verdana","Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;!important
+}
+
+.test {
+  height: 50px;
+}
+
+#root-header a:hover, #root-header a:active,#root-header a:focus, #root-header a:visited,#root-header ul li{
+  color: white !important;
+  background-color: inherit !important;
+}
+
+#root-header ul {
+  background-color:black;
+}
+
+.root-nav a{
+  color: white !important;
+}
 .nav a {
   color: rgba(0,0,0,.65)
 }
