@@ -4,12 +4,52 @@ var Cart = require('../models/cart')
 
 var Product = require('../models/products');
 
+//上傳檔案
+var multer  = require('multer');
+
+var storage = multer.diskStorage({
+    destination: function (req, file, cb){
+        cb(null, './public/images')
+    },
+    filename: function (req, file, cb){
+        cb(null, file.originalname)
+    }
+});
+var upload = multer({
+    storage: storage
+});
+
+
+//上傳檔案(尾)
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   var loginMsg = req.flash('login');
   var SuccessBuying = req.flash('success');
   Product.find(function(err, result) {
       res.render('index', { title: 'Shopping-Cart', products: result , loginMsg: loginMsg, NotLogin:loginMsg.length>0, SuccessBuying: SuccessBuying, MsgBuying: SuccessBuying.length>0});
+  })
+
+});
+
+router.get('/addItem', function(req, res, next) {
+  res.render('backEnd/addItem')
+})
+
+
+router.post('/addItem', upload.array('field1', 5), function (req, res) {
+  var ImagePath = req.files[0].path.substr(7)
+  var product = new Product({
+    productType:req.body.productType,
+    title: req.body.title,
+    description: req.body.description,
+		imagePath: ImagePath,
+		price: req.body.price
+  })
+  console.log(ImagePath)
+  product.save(function(err, result){
+    req.flash('success', '商品新增成功!');
+    res.redirect('/admin');
   })
 
 });

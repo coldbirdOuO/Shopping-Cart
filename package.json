@@ -24,6 +24,7 @@
     "passport-local": "^1.0.0",
     "passport-local-authenticate": "^1.2.0",
     "serve-favicon": "~2.3.0",
-    "stripe": "^4.9.0"
+    "stripe": "^4.9.0",
+    "multer": "1.1.0"
   }
 }

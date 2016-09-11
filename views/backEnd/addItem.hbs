@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col-md-4 col-md-offset-4">
+  <form method='post' action='/addItem' enctype='multipart/form-data' >
+        <h1>新增商品</h1>
+        <div class="form-group">
+          <label for="title">商品名稱</label>
+          <input type="text" name='title' class='form-control'>
+        </div>
+        <div class="form-group">
+          <label for="sel1">商品種類:</label>
+          <select class="form-control" name='productType' id="sel1">
+            <option>GAME</option>
+            <option>VIDEO</option>
+            <option>BOOK</option>
+            <option>APP</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="description">簡介</label>
+          <input type="text" name='description' class='form-control'>
+        </div>
+        <div class="form-group">
+          <label for="description">設定價錢</label>
+          <input type="text" name='price' class='form-control'>
+        </div>
+        <div class="form-group">
+          <label for="imagePath">商品圖片</label>
+          <input type="file"  multiple name='field1' name='picture'/><br>
+        </div>
+        <button type='submit' class='btn btn-primary'>送出</button>
+    </form>
+  </div>
+</div>
