@@ -32,6 +32,13 @@ router.get('/', function(req, res, next) {
 
 });
 
+router.get('/admin', function(req, res, next) {
+  var SuccessBuying = req.flash('success');
+  Product.find(function(err, result) {
+      res.render('index', { title: 'Shopping-Cart', products: result, root:true, SuccessBuying: SuccessBuying, MsgBuying: SuccessBuying.length>0});
+  })
+})
+
 router.get('/addItem', function(req, res, next) {
   res.render('backEnd/addItem')
 })
@@ -48,12 +55,24 @@ router.post('/addItem', upload.array('field1', 5), function (req, res) {
   })
   console.log(ImagePath)
   product.save(function(err, result){
-    req.flash('success', '商品新增成功!');
+    req.flash('success', '新增成功!');
     res.redirect('/admin');
   })
 
 });
 
+
+router.get('/delete/:id', function(req, res, next) {
+  var productId = req.params.id;
+  Product.findById(productId, function(err, product) {
+    if(err) {
+      return res.redirect('/');
+    }
+    product.remove()
+    req.flash('success', '刪除成功！');
+    res.redirect('/admin')
+  })
+})
 
 router.get('/add-to-cart/:id', function(req, res, next) {
   var productId = req.params.id;
@@ -108,11 +127,7 @@ router.post('/checkout', function(req, res, next) {
   });
 })
 
-router.get('/admin', function(req, res, next) {
-  Product.find(function(err, result) {
-      res.render('index', { title: 'Shopping-Cart', products: result, root:true});
-  })
-})
+
 
 function isLoggedIn(req, res, next) {
   if(req.isAuthenticated()) {
