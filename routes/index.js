@@ -18,9 +18,9 @@ var storage = multer.diskStorage({
 var upload = multer({
     storage: storage
 });
-
-
 //上傳檔案(尾)
+
+var url = require('url')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -75,13 +75,14 @@ router.get('/delete/:id', function(req, res, next) {
 })
 
 router.get('/add-to-cart/:id', function(req, res, next) {
+  var amount = parseInt(req.query.amount)
   var productId = req.params.id;
   var cart = new Cart(req.session.cart ? req.session.cart : {});
   Product.findById(productId, function(err, product){
     if(err) {
       return res.redirect('/');
     }
-    cart.add(product, productId);
+    cart.add(product, productId, amount);
     console.log(cart)
     req.session.cart = cart
     res.redirect('/')

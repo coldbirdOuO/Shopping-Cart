@@ -3,14 +3,14 @@ module.exports = function(oldCart) {
   this.totalQty = oldCart.totalQty || 0;
   this.price = oldCart.price || 0;
 
-  this.add = function(item, id) {
+  this.add = function(item, id, amount) {
     var storedItem = this.items[id];
     if(!storedItem) {
       storedItem = this.items[id] = {item: item, qty: 0, price: 0};
     }
-    storedItem.qty++;
+    storedItem.qty+=amount;
     storedItem.price = storedItem.qty * storedItem.item.price;
-    this.totalQty++;
+    this.totalQty+=amount;
     this.price += storedItem.item.price;
   }
   // this.generateArray = function() {
