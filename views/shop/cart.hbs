@@ -29,7 +29,22 @@
 <hr>
 <div class="row">
 	<div class="col-sm-6 col-md-6 col-md-offset-3 col-sm-offset-3">
-		<a href='/checkout' type='button' class="btn btn-success">Check Out!</a>
+		<a href='/checkout' type='button' class="btn btn-success">信用卡付款!</a>
+		<form method="post" action="/allpay">
+		        <input type="hidden" name="MerchantID" placeholder="MerchantID" value="2000132">
+		        <input type="hidden" name="MerchantTradeNo" placeholder="MerchantTradeNo" value="{{RandonNumber}}">
+		        <input type="hidden" name="MerchantTradeDate" placeholder="MerchantTradeDate" value="{{now}}">
+		        <input type="hidden" name="PaymentType" placeholder="PaymentType" value="aio">
+		        <input type="hidden" name="TotalAmount" placeholder="TotalAmount" value="{{totalPrice}}">
+		        <input type="hidden" name="TradeDesc" placeholder="TradeDesc" value="allpay 商城購物-">
+		        <input type="hidden" name="ItemName" placeholder="ItemName" value="{{#each products}} {{item.title}} x {{qty}}個 {{/each}}">
+		        <input type="hidden" name="ReturnURL" placeholder="ReturnURL" value="https://putsreq.com/7ATnz7ij618aHx41WhMB">
+		        <input type="hidden" name="ChoosePayment" placeholder="ChoosePayment" value="ALL">
+		        <input type="hidden" name="CheckMacValue" placeholder="不用填">
+			<button type="submit"><img src="images/allpay.png" alt="" /></button>
+		</form>
+
+
 	</div>
 </div>
 {{else}}
