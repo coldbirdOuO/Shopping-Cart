@@ -22,7 +22,7 @@
 
 ##使用方法 (二) (拿掉email與stripe，可直接使用)
 
-switch to no-stripe branch
->git clone https://github.com/coldbirdOuO/Shopping-Cart.git
+>switch to no-stripe branch  
+>git clone https://github.com/coldbirdOuO/Shopping-Cart.git  
 >sudo npm install  
 >npm start  
