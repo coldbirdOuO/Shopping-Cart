@@ -10,10 +10,19 @@
 * 前後端分離 (預計做兩個版本，一個靠express的模板引擎render，一個用vuejs處理前端) (0%)
 
 
-##使用方法
+##使用方法 (一)
+>git clone https://github.com/coldbirdOuO/Shopping-Cart.git
 >sudo npm install  
->npm start  
+>sudo npm start  
 
 記得自行修改credentials.js的帳號密碼與checkout.js的Stripe public key
 
 後台頁面請輸入http://localhost:3000/admin
+
+
+##使用方法 (二) (拿掉email與stripe，可直接使用)
+
+>switch to no-stripe branch  
+>git clone https://github.com/coldbirdOuO/Shopping-Cart.git  
+>sudo npm install  
+>sudo npm start  
