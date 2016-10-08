@@ -28,6 +28,7 @@
     "passport-local-authenticate": "^1.2.0",
     "request": "^2.72.0",
     "serve-favicon": "~2.3.0",
-    "stripe": "^4.9.0"
+    "stripe": "^4.9.0",
+    "mongoose": "~4.6.3"
   }
 }
