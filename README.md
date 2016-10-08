@@ -13,7 +13,7 @@
 ##使用方法 (一)
 >git clone https://github.com/coldbirdOuO/Shopping-Cart.git
 >sudo npm install  
->npm start  
+>sudo npm start  
 
 記得自行修改credentials.js的帳號密碼與checkout.js的Stripe public key
 
@@ -25,4 +25,4 @@
 >switch to no-stripe branch  
 >git clone https://github.com/coldbirdOuO/Shopping-Cart.git  
 >sudo npm install  
->npm start  
+>sudo npm start  
