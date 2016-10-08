@@ -15,16 +15,9 @@ var auth = require('passport-local-authenticate');
 var User = require('../models/user');
 
 //寄感謝註冊信
-var nodemailer = require('nodemailer');
-var credentials = require('../config/credentials')
 
-var mailTransport = nodemailer.createTransport('SMTP',{
-    service: 'Gmail',
-    auth: {
-        user: credentials.gmail.user,
-        pass: credentials.gmail.password
-    }
-});
+
+
 //寄感謝註冊信
 
 
@@ -106,16 +99,6 @@ router.post('/signup', passport.authenticate('local.signup', {
      if(err){
          console.log('error in email template');
      }
-     mailTransport.sendMail({
-       from: '"ColdbirdOuO ShoppingCart" <moopen200@gmail.com>', // sender address
-       to: email, // list of receivers
-       subject: 'Welcome to ColdbirdOuO ShoppingCart', // Subject line
-       html: html
-     }, function(err) {
-         if(err){
-             console.error('Unable to send confirmation: ' + err.stack)
-         };
-     });
    })
    res.render('mail/user3QforWeb',{email:email});
 });

@@ -136,35 +136,7 @@ router.get('/shopping-cart', function(req, res,next) {
   res.render('shop/cart', {products: products, totalPrice: cart.price, now: nowformat, RandonNumber: RandonNumber})
 })
 
-router.get('/checkout', isLoggedIn,function(req, res, next) {
-  if(!req.session.cart) {
-    res.redirect('shop/cart')
-  }
-  var cart = new Cart(req.session.cart);
-  var errMsg = req.flash('error')[0];
-  res.render('shop/checkout', {total: cart.price, errMsg:errMsg, noErrors:!errMsg})
-})
 
-router.post('/checkout', function(req, res, next) {
-  var cart = new Cart(req.session.cart);
-  var stripe = require("stripe")(
-    "sk_test_gH5cAVIoBfP8N1s1Vx2jAhir"
-  );
-  stripe.charges.create({
-    amount: cart.price * 100,
-    currency: "usd",
-    source: req.body.stripeToken, // obtained with Stripe.js
-    description: "Charge for david.anderson@example.com"
-  }, function(err, charge) {
-    if(err) {
-      req.flash('error', err.message);
-      return res.redirect('/checkout');
-    }
-    req.flash('success', 'Success brought product');
-    req.session.cart = null;
-    res.redirect('/');
-  });
-})
 
 // router.get('/allpay', isLoggedIn,function(req, res, next) {
 //   if(!req.session.cart) {
